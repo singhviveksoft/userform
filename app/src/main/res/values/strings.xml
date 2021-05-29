@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Assigment Demo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Education">Education</string>
+    <string name="YOP">Year Of Passing </string>
+    <string name="YOE">Year Of Experiance </string>
+    <string name="University">University</string>
+    <string name="Grade">Grade</string>
+    <string name="Year_Experience">Year Experience</string>
+    <string name="Designation">Designation</string>
+    <string name="Domain">Domain</string>
+    <string name="fName">First Name</string>
+    <string name="lName">Last Name</string>
+    <string name="email">Email Id</string>
+    <string name="mob">Mobile</string>
+    <string name="pwd">Password</string>
+    <string name="conf_pwd">Confirm Password</string>
+    <string name="req">Required*</string>
+
+    //------------------------
+    <string name="Address">Address</string>
+    <string name="Locality">Locality/Landmark</string>
+    <string name="Zip_Code">Zip Code</string>
+    <string name="City">City</string>
+    <string name="State">State</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

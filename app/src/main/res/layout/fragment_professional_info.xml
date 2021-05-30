@@ -8,9 +8,50 @@
             name="viewModel"
             type="com.example.assigmentdemo.viewmodels.UserViewModel" />
     </data>
-<ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:fitsSystemWindows="true"
+            >
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="@color/colorPrimaryVariant"
+                android:background="@drawable/gradient_bg"
+
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    app:layout_collapseMode="pin"
+                    app:title="@{viewModel.FirstName.concat(@string/space).concat(viewModel.LastName)}"
+                    android:layout_height="?attr/actionBarSize">
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+<androidx.core.widget.NestedScrollView
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +59,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout8"
+            android:id="@+id/yop_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -32,7 +73,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/edu_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/yop_edt"
@@ -47,7 +88,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout7"
+            android:id="@+id/grade_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -60,12 +101,12 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+            app:layout_constraintTop_toBottomOf="@+id/university_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/grade_edt"
                 android:inputType="text"
-                android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm,_,-"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_- "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={viewModel.Grade}"
@@ -75,7 +116,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout9"
+            android:id="@+id/description_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -88,7 +129,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+            app:layout_constraintTop_toBottomOf="@+id/yoe_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/discription_edt"
@@ -97,13 +138,13 @@
                 android:imeOptions="actionNext"
                 android:singleLine="true"
                 android:inputType="text"
-                android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm,_,-"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_- "
                 android:text="@={viewModel.Designation}"
                 android:hint="@string/Designation" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout6"
+            android:id="@+id/yoe_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -116,7 +157,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+            app:layout_constraintTop_toBottomOf="@+id/grade_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/yoe_edt"
@@ -132,7 +173,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
-            android:id="@+id/textInputLayout"
+            android:id="@+id/edu_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -156,7 +197,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout5"
+            android:id="@+id/university_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -169,14 +210,14 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
+            app:layout_constraintTop_toBottomOf="@+id/yop_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/university_edt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:imeOptions="actionNext"
                 android:singleLine="true"
                 android:text="@={viewModel.University}"
@@ -184,7 +225,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout10"
+            android:id="@+id/domain_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -197,7 +238,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+            app:layout_constraintTop_toBottomOf="@+id/description_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/domain_edt"
@@ -206,7 +247,7 @@
                 android:imeOptions="actionDone"
                 android:singleLine="true"
                 android:inputType="text"
-                android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm,_,-"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_- "
                 android:text="@={viewModel.Domain}"
                 android:hint="@string/Domain" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -221,7 +262,7 @@
 
             android:background="@drawable/gender_bg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
+            app:layout_constraintTop_toBottomOf="@+id/domain_textInputLayout" />
 
         <Button
             android:id="@+id/next_button"
@@ -232,7 +273,8 @@
             android:text="Next"
             android:background="@drawable/gender_bg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
+            app:layout_constraintTop_toBottomOf="@+id/domain_textInputLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

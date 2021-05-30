@@ -16,7 +16,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout11"
+            android:id="@+id/address_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -43,7 +43,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout12"
+            android:id="@+id/locality_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -57,7 +57,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
+            app:layout_constraintTop_toBottomOf="@+id/address_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/locality_edt"
@@ -70,7 +70,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout13"
+            android:id="@+id/zip_code_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -84,7 +84,7 @@
             android:hint="@string/Zip_Code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+            app:layout_constraintTop_toBottomOf="@+id/locality_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/zipCode_edt"
@@ -99,7 +99,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout14"
+            android:id="@+id/city_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -113,13 +113,13 @@
             android:hint="@string/City"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+            app:layout_constraintTop_toBottomOf="@+id/zip_code_textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/city_edt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:inputType="text"
                 android:text="@={viewModel.City}"
                 android:imeOptions="actionDone"
@@ -130,7 +130,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
 
-            android:id="@+id/textInputLayout15"
+            android:id="@+id/state_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -143,7 +143,7 @@
             app:startIconDrawable="@drawable/ic_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+            app:layout_constraintTop_toBottomOf="@+id/city_textInputLayout">
             <AutoCompleteTextView
                 android:id="@+id/autoComplete"
                 android:layout_width="match_parent"
@@ -165,6 +165,17 @@
             android:background="@drawable/gender_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout15" />
+            app:layout_constraintTop_toBottomOf="@+id/state_textInputLayout" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="93dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:text="Back"
+            android:background="@drawable/gender_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

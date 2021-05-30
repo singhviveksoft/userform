@@ -49,8 +49,8 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
         const val GALLERY_REQUEST_CODE = 2
 
     }
-
-    var check_rb_id:Int?=null
+    private  var selectedRadioButton: RadioButton?=null
+    var check_rb_id:String?=null
     private var imageUri: Uri? = null
     private var  bitmap: Bitmap? = null
 
@@ -71,24 +71,45 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
         binding.viewModel = userViewModel
         binding.setLifecycleOwner(this)
         binding.button.setOnClickListener {
+         //   findNavController().navigate(R.id.action_basicFragment_to_professionalInfoFragment)
+
+
             if (check()) {
                 //  userViewModel.inserUser()
                 findNavController().navigate(R.id.action_basicFragment_to_professionalInfoFragment)
             }
         }
        binding.genderRg.setOnCheckedChangeListener { group, checkedId ->
-      //  val male_rb_id=  group.checkedRadioButtonId
-        val male_rb_id=  2131230952
-           check_rb_id  =  checkedId
-           if (male_rb_id==checkedId){
-               userViewModel.gender.value="Male"
-           }
-           else{
-               userViewModel.gender.value="Female"
 
-           }
-          // Toast.makeText(requireContext(),a.toString(),Toast.LENGTH_LONG).show()
+             check_rb_id= when(checkedId){
+               R.id.male_rb->  "Men"
+
+              else ->  "Female"
+          }
+           userViewModel.gender.value=check_rb_id
+           /* val selectedRadioButtonId: Int = binding.genderRg.checkedRadioButtonId
+            if (selectedRadioButtonId != -1) {
+                selectedRadioButton = selectedRadioButtonId as RadioButton
+                val string: String = selectedRadioButton!!.text.toString()
+                Toast.makeText(requireContext(),string,Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(),"ggggg",Toast.LENGTH_LONG).show()
+
+            }*/
+
+
+      //  val male_rb_id=  group.checkedRadioButtonId
+//        val male_rb_id=  2131230952
+//           check_rb_id  =  checkedId
+//           if (male_rb_id==checkedId){
+//               userViewModel.gender.value="Male"
+//           }
+//           else{
+//               userViewModel.gender.value="Female"
+//
+//           }
        }
+
 
 
 
@@ -233,45 +254,46 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
 
 
     fun check():Boolean{
-        var flag:Boolean=true
-        flag=Validation.isValidPassword(binding.pwdEditText)
-        var    flag2=Validation.isValidPassword(binding.confPwdEditText)
+
+        var flag1=binding.pwdEditText.text.toString()
+        var flag2=binding.confPwdEditText.text.toString()
 
      if (!Validation.isCharValid(binding.fNameEditText))
      {
-         return Validation.errormsg(requireContext(),"Enter more than 3 characters first name")
+         return Validation.errormsg(requireContext(),"Enter more than 3 characters first name",binding.fNameEditText)
      }
         else if (!Validation.isCharValid(binding.lNameEditText))
         {
-            return Validation.errormsg(requireContext(),"Enter more than 3 characters  last name")
+            return Validation.errormsg(requireContext(),"Enter more than 3 characters  last name",binding.lNameEditText)
         }
        else if (!Validation.isEmailId(binding.emailEditText))
         {
-            return Validation.errormsg(requireContext(),"Enter your proper email id")
+            return Validation.errormsg(requireContext(),"Enter your proper email id",binding.emailEditText)
         }
       else  if (!Validation.isValidPassword(binding.pwdEditText))
         {
-            return Validation.errormsg(requireContext(),"Enter your password")
+
+            return Validation.errormsg(requireContext(),"Enter a strong password of minimum 8 digit",binding.pwdEditText)
         }
      else  if (!Validation.isValidPassword(binding.confPwdEditText))
      {
-         return Validation.errormsg(requireContext(),"Confirm your password")
+         return Validation.errormsg(requireContext(),"Confirm your password",binding.confPwdEditText)
      }
 
-     else  if (flag!=flag2)
+     else  if (flag1!=flag2)
      {
-         return Validation.errormsg(requireContext(),"Enter password does not match")
+         return Validation.errormsg(requireContext(),"Enter password does not match",binding.confPwdEditText)
      }
      else  if (!Validation.isMobileValid(binding.mobEditText))
      {
-         return Validation.errormsg(requireContext(),"Enter your correct mobile number")
+         return Validation.errormsg(requireContext(),"Enter your correct mobile number",binding.mobEditText)
      }
         else if (check_rb_id==null){
-         return Validation.errormsg(requireContext(),"Select your gender")
+         return Validation.errormsgcheck(requireContext(),"Select your gender")
 
      }
         else if (bitmap==null){
-         return Validation.errormsg(requireContext(),"Choose your photo")
+         return Validation.errormsgcheck(requireContext(),"Choose your photo")
 
      }
         return true
@@ -279,42 +301,5 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
     }
 
 
-fun isValid():Boolean {
 
-    val fName = binding.fNameEditText.text.toString().trim()
-    val lName = binding.lNameEditText.text.toString().trim()
-    val email = binding.emailEditText.text.toString().trim()
-    val pwd = binding.pwdEditText.text.toString().trim()
-    val conf_pwd = binding.confPwdEditText.text.toString().trim()
-    val mob = binding.mobEditText.text.toString().trim()
-
-    if (fName.isNullOrEmpty() || fName.length < 3) {
-        return false
-    }else if (lName.isNullOrEmpty()|| lName.length<3){
-        return false
-    }
-    else if (!email.isNullOrEmpty()){
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-    else if (mob.isNullOrEmpty()){
-        return Patterns.PHONE.matcher(mob).matches()
-
-    }
-    else if (pwd.isNullOrEmpty()){
-        return isValidPassword(pwd)
-    }
-
-    return true
-
-}
-
-    private fun isValidPassword(password: String): Boolean {
-        val pattern: Pattern
-        val matcher: Matcher
-        val specialCharacters = "-@%\\[\\}+'!/#$^?:;,\\(\"\\)~`.*=&\\{>\\]<_"
-        val PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$specialCharacters])(?=\\S+$).{8,20}$"
-        pattern = Pattern.compile(PASSWORD_REGEX)
-        matcher = pattern.matcher(password)
-        return matcher.matches()
-    }
 }

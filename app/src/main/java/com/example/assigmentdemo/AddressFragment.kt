@@ -40,12 +40,16 @@ private lateinit var userViewModel: UserViewModel
         binding.viewModel=userViewModel
         binding.lifecycleOwner=this
         binding.nextBtn.setOnClickListener {
-
+              //  findNavController().navigate(R.id.action_addressFragment_to_profileFragment)
             if (check()){
                 userViewModel.inserUser()
                 findNavController().navigate(R.id.action_addressFragment_to_userProfileFragment)
 
             }
+        }
+
+        binding.backBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_addressFragment_to_professionalInfoFragment)
         }
         return binding.root
     }
@@ -64,24 +68,24 @@ private lateinit var userViewModel: UserViewModel
         state= binding.autoComplete.text.toString()
         if (!Validation.isCharValid(binding.addressEdit))
         {
-            return Validation.errormsg(requireContext(),"Enter more than 3  characters address")
+            return Validation.errormsg(requireContext(),"Enter more than 3  characters address",binding.addressEdit)
         }
         if (!Validation.isCharValid(binding.localityEdt))
         {
-            return Validation.errormsg(requireContext(),"Enter more than 3 characters locality")
+            return Validation.errormsg(requireContext(),"Enter more than 3 characters locality",binding.localityEdt)
         }
         if (!Validation.isZipValid(binding.zipCodeEdt))
         {
-            return Validation.errormsg(requireContext(),"Enter proper zip code")
+            return Validation.errormsg(requireContext(),"Enter proper zip code",binding.zipCodeEdt)
         }
         if (!Validation.isCharactValid(binding.cityEdt))
         {
-            return Validation.errormsg(requireContext(),"Enter your city")
+            return Validation.errormsg(requireContext(),"Enter your city",binding.cityEdt)
         }
 
 
-        if (state==null){
-            return Validation.errormsg(requireContext(),"Select your education")
+        if (state.isNullOrBlank()){
+            return Validation.errormsgcheck(requireContext(),"Select your state")
 
         }
 

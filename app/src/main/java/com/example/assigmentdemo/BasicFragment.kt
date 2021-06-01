@@ -87,28 +87,12 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
               else ->  "Female"
           }
            userViewModel.gender.value=check_rb_id
-           /* val selectedRadioButtonId: Int = binding.genderRg.checkedRadioButtonId
-            if (selectedRadioButtonId != -1) {
-                selectedRadioButton = selectedRadioButtonId as RadioButton
-                val string: String = selectedRadioButton!!.text.toString()
-                Toast.makeText(requireContext(),string,Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(),"ggggg",Toast.LENGTH_LONG).show()
 
-            }*/
-
-
-      //  val male_rb_id=  group.checkedRadioButtonId
-//        val male_rb_id=  2131230952
-//           check_rb_id  =  checkedId
-//           if (male_rb_id==checkedId){
-//               userViewModel.gender.value="Male"
-//           }
-//           else{
-//               userViewModel.gender.value="Female"
-//
-//           }
        }
+
+        binding.historyBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_basicFragment_to_userlistFragment)
+        }
 
 
 
@@ -238,6 +222,7 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
                 binding.imageView.load(data?.data) {
                     crossfade(true)
                     crossfade(1000)
+
                     transformations(CircleCropTransformation())
                 }
             }catch (ex:Exception){}
@@ -251,7 +236,18 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (bitmap!=null) {
+            userViewModel.profile_photo.value = bitmap
+            binding.imageView.load(bitmap) {
 
+                crossfade(true)
+                crossfade(1000)
+                transformations(CircleCropTransformation())
+            }
+        }
+    }
 
     fun check():Boolean{
 
@@ -275,10 +271,10 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
 
             return Validation.errormsg(requireContext(),"Enter a strong password of minimum 8 digit",binding.pwdEditText)
         }
-     else  if (!Validation.isValidPassword(binding.confPwdEditText))
+    /* else  if (!Validation.isValidPassword(binding.confPwdEditText))
      {
-         return Validation.errormsg(requireContext(),"Confirm your password",binding.confPwdEditText)
-     }
+         return Validation.errormsg(requireContext(),"Enter a strong password of minimum 8 digit",binding.confPwdEditText)
+     }*/
 
      else  if (flag1!=flag2)
      {

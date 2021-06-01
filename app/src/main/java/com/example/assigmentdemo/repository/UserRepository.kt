@@ -6,9 +6,9 @@ import com.example.assigmentdemo.db.UserEnitity
 
 class UserRepository(val db: UserDataBase) {
 
-    suspend fun insert(userEnitity: UserEnitity) = db.userDao.insertUser(userEnitity)
+    suspend fun insert(userEnitity: List<UserEnitity>) = db.userDao.insertUser(userEnitity)
 
-    fun getUser(): LiveData<UserEnitity> {
+    fun getUser(): LiveData<List<UserEnitity>> {
         return db.userDao.getUser()
     }
 }

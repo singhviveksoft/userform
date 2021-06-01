@@ -21,6 +21,7 @@ class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
     private   lateinit var db: UserDataBase
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,13 +33,15 @@ class UserProfileFragment : Fragment() {
             .get(UserViewModel::class.java)
         binding.viewModel=userViewModel
         binding.lifecycleOwner=this
-        displayUser()
+       // displayUser()
         return binding.root
     }
     fun displayUser(){
         userViewModel.getUser.observe(viewLifecycleOwner, Observer {
             try {
+                it.reversed()
                 Log.i("check",it.toString())
+
             }catch (e:Exception){
                 Log.i("check",e.message.toString())
 

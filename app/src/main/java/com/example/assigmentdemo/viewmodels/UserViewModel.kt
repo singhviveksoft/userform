@@ -132,10 +132,12 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.insert(
-             UserEnitity(
-              id = 0, fname, lName, email_id, pwd, conf_pwd, mob, profile_photo, gender,
-              eductation, experience,address
-             )
+                listOf(
+                    UserEnitity(
+                        id = 0, fname, lName, email_id, pwd, conf_pwd, mob, profile_photo, gender,
+                        eductation, experience,address
+                    )
+                )
             )
         }
 

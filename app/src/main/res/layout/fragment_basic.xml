@@ -118,6 +118,7 @@
                 android:layout_marginEnd="10dp"
                 android:hint="Last Name"
                 app:endIconMode="clear_text"
+
                 app:errorEnabled="true"
                 app:helperText="@string/req"
                 app:helperTextTextColor="@color/black"
@@ -132,6 +133,8 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+
                     android:text="@={viewModel.LName}"></com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,6 +172,8 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+
                     android:text="@={viewModel.FName}" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -231,6 +236,7 @@
                         android:gravity="center"
                         android:minWidth="100dp"
                         android:padding="5dp"
+                        android:textColor="@color/white"
                         android:text="Female"></RadioButton>
 
                     <RadioButton
@@ -243,6 +249,7 @@
                         android:gravity="center"
                         android:minWidth="100dp"
                         android:padding="5dp"
+                        android:textColor="@color/white"
                         android:text="Male">
 
                     </RadioButton>
@@ -254,11 +261,23 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textColor="@color/white"
                     android:background="@drawable/gender_bg"
                     android:text="Next" />
 
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/history_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="16dp"
+
+                android:background="@drawable/gender_bg"
+                android:src="@drawable/ic_history"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

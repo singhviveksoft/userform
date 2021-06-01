@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_basicFragment_to_professionalInfoFragment"
             app:destination="@id/professionalInfoFragment" />
+        <action
+            android:id="@+id/action_basicFragment_to_userlistFragment"
+            app:destination="@id/userlistFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/professionalInfoFragment"
@@ -46,4 +50,8 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.assigmentdemo.UserProfileFragment"
         android:label="UserProfileFragment" />
+    <fragment
+        android:id="@+id/userlistFragment"
+        android:name="com.example.assigmentdemo.UserlistFragment"
+        android:label="UserlistFragment" />
 </navigation>

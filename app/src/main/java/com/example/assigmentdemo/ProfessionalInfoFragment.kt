@@ -47,7 +47,8 @@ class ProfessionalInfoFragment : Fragment() {
             }
         }
         binding.previousBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_professionalInfoFragment_to_basicFragment)
+          //  findNavController().navigate(R.id.action_professionalInfoFragment_to_basicFragment)
+            findNavController().popBackStack()
 
         }
 

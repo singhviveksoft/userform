@@ -69,7 +69,7 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
             UserViewModel::class.java
         )
         binding.viewModel = userViewModel
-        binding.setLifecycleOwner(this)
+      //  binding.setLifecycleOwner(this)
         binding.button.setOnClickListener {
          //   findNavController().navigate(R.id.action_basicFragment_to_professionalInfoFragment)
 

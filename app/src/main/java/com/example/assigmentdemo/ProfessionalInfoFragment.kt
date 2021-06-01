@@ -37,7 +37,7 @@ class ProfessionalInfoFragment : Fragment() {
         )
 
         binding.viewModel = userViewModel
-        binding.setLifecycleOwner(this)
+      //  binding.setLifecycleOwner(this)
 
         binding.nextButton.setOnClickListener {
           //  findNavController().navigate(R.id.action_professionalInfoFragment_to_addressFragment)

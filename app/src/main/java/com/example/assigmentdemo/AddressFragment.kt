@@ -38,7 +38,7 @@ private lateinit var userViewModel: UserViewModel
         userViewModel=ViewModelProvider(requireActivity(),UserFactory(UserRepository(db)))
             .get(UserViewModel::class.java)
         binding.viewModel=userViewModel
-        binding.lifecycleOwner=this
+      //  binding.lifecycleOwner=this
         binding.nextBtn.setOnClickListener {
               //  findNavController().navigate(R.id.action_addressFragment_to_profileFragment)
             if (check()){

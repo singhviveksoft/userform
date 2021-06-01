@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<variable
+    name="model"
+    type="com.example.assigmentdemo.db.UserEnitity" />
+    </data>
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="10dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:id="@+id/user_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    app:loadImage="@{model.profilePhoto}"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:fontFamily="@font/belgrano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="8dp"
+                    android:padding="4dp"
+
+                    android:text="@{model.gender,default=gender}"></TextView>
+
+                <TextView
+                    android:id="@+id/user_txt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/user_img"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/belgrano"
+                    android:maxLines="1"
+                    android:padding="4dp"
+                    android:text="@{model.firstName.concat(model.lastName),default=name}"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/mob_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_txt"
+                    android:layout_toRightOf="@id/user_img"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/belgrano"
+                    android:maxLines="1"
+                    android:padding="4dp"
+                    android:text="@{model.mobileNumber,default=mobile}"></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mob_txt"
+                    android:layout_toRightOf="@id/user_img"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/belgrano"
+                    android:maxLines="1"
+                    android:padding="4dp"
+                    android:text="@{model.email,default =email}"></TextView>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+</layout>

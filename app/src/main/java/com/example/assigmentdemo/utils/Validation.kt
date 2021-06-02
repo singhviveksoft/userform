@@ -30,6 +30,26 @@ class Validation {
 
         }
 
+        fun String.isCharValid(string: String): Boolean {
+            val name = string.toString().trim()
+            if (!TextUtils.isEmpty(name)) {
+                if (name.isNullOrBlank() || name.length <= 3) {
+
+                    return false
+                } else {
+                    return true
+                }
+
+
+            }
+
+
+            return false
+
+        }
+
+
+
         fun isCharactValid(edit: EditText): Boolean {
             val name = edit.text.toString().trim()
             if (!TextUtils.isEmpty(name)) {
@@ -47,6 +67,26 @@ class Validation {
             return false
 
         }
+
+
+        fun String.isCharactValid(string: String): Boolean {
+            val name = string.toString().trim()
+            if (!TextUtils.isEmpty(name)) {
+                if (name.isNullOrBlank()) {
+
+                    return false
+                } else {
+                    return true
+                }
+
+
+            }
+
+
+            return false
+
+        }
+
 
 
         fun isZipValid(edit: EditText): Boolean {

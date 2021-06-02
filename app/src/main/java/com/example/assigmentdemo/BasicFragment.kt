@@ -31,6 +31,7 @@ import com.example.assigmentdemo.databinding.FragmentBasicBinding
 import com.example.assigmentdemo.db.UserDataBase
 import com.example.assigmentdemo.repository.UserRepository
 import com.example.assigmentdemo.utils.Validation
+import com.example.assigmentdemo.utils.Validation.Companion.isCharValid
 import com.example.assigmentdemo.viewmodelfactorys.UserFactory
 import com.example.assigmentdemo.viewmodels.UserViewModel
 import com.vmadalin.easypermissions.EasyPermissions
@@ -254,14 +255,26 @@ class BasicFragment : Fragment(),EasyPermissions.PermissionCallbacks {
         var flag1=binding.pwdEditText.text.toString()
         var flag2=binding.confPwdEditText.text.toString()
 
-     if (!Validation.isCharValid(binding.fNameEditText))
-     {
-         return Validation.errormsg(requireContext(),"Enter more than 3 characters first name",binding.fNameEditText)
+   //  if (!Validation.isCharValid(binding.fNameEditText))
+     if (!binding.fNameEditText.text.toString().isCharValid(binding.fNameEditText.text.toString().trim()))
+     {          binding.fNameEditText.error="Enter more than 3 characters first name"
+       //  return Validation.errormsg(requireContext(),"Enter more than 3 characters first name",binding.fNameEditText)
+         return false
      }
-        else if (!Validation.isCharValid(binding.lNameEditText))
-        {
-            return Validation.errormsg(requireContext(),"Enter more than 3 characters  last name",binding.lNameEditText)
-        }
+
+        else if (!binding.lNameEditText.text.toString().isCharValid(binding.lNameEditText.text.toString().trim()))
+         {
+             binding.lNameEditText.error= "Enter more than 3 characters  last name"
+
+            return false
+//             return Validation.errormsg(
+//                 requireContext(),
+//                 "Enter more than 3 characters  last name",
+//                 binding.lNameEditText
+//             )
+         }
+
+
        else if (!Validation.isEmailId(binding.emailEditText))
         {
             return Validation.errormsg(requireContext(),"Enter your proper email id",binding.emailEditText)
